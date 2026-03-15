@@ -13,6 +13,7 @@ const targetObj = {
 const check1 = { id: 1, user: { profile: { age: 25 } } };
 const result1 = isPartialMatchWithKeys(check1, targetObj);
 console.log(result1);
+console.log(result1['matchedPaths'][1].reduce((acc, key) => acc?.[key], targetObj))
 /* 出力結果:
 {
   isMatch: true,
@@ -29,6 +30,8 @@ console.log(result1);
 const check2 = { user: { profile: { age: 30 } } }; // ageが違う
 const result2 = isPartialMatchWithKeys(check2, targetObj);
 console.log(result2);
+console.log(result2['matchedPaths'][0].reduce((acc, key) => acc?.[key], targetObj))
+
 /* 出力結果:
 {
   isMatch: false,
